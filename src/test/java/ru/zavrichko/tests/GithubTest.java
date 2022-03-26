@@ -110,39 +110,5 @@ public class GithubTest extends TestBase {
         });
     }
 
-    @Test
-    public void testRollbarSearch() {
-        step("Перейти на главную страницу", () -> {
-            open(baseUrl);
-        });
-        step("Нажать на ссылку Marketplace в меню", () -> {
-            $(linkText("Marketplace")).click();
-        });
-        step("В поиск ввести Rollbar", () -> {
-            $x("//input[@type='search']").click();
-            $x("//input[@type='search']").sendKeys("Rollbar");
-            $x("//input[@type='search']").pressEnter();
-        });
-        step("Проверяем наличие найденного приложения", () -> {
-            $x("//h3[text()[normalize-space()='Rollbar']]").should(Condition.visible);
-        });
-    }
 
-    @Test
-    public void testAllureFrameworkSearch() {
-        step("Перейти на главную страницу", () -> {
-            open(baseUrl);
-        });
-        step("В поиск ввести allure", () -> {
-            $(".header-search-input").click();
-            $(".header-search-input").sendKeys("allure");
-            $(".header-search-input").submit();
-        });
-        step("Перейти в репозиторий allure-framework/allure2", () -> {
-            $(linkText("allure-framework/allure2")).click();
-        });
-        step("Проверить отображение блока Allure TestOps", () -> {
-            $x("//h2[text()='Allure TestOps']").should(Condition.visible);
-        });
-    }
 }
