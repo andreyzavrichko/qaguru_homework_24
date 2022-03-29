@@ -111,4 +111,63 @@ public class GithubTest extends TestBase {
     }
 
 
+    //Add new autotests for GitHub pages by Azolayza
+
+    @Test
+    public void testGoToTeamPage() {
+        step("Перейти на главную страницу", () -> {
+            open(baseUrl);
+        });
+        step("Нажать на ссылку Team в меню", () -> {
+            $(linkText("Team")).click();
+        });
+        step("Проверить отображение «Build like the best teams on the planet»", () -> {
+            $(".h1-mktg").shouldHave(Condition.text("Build like the best teams on the planet"));
+        });
+    }
+
+    @Test
+    public void testSignUpForFreeTeamPage() {
+        step("Перейти на главную страницу", () -> {
+            open(baseUrl);
+        });
+        step("Нажать на ссылку Team в меню", () -> {
+            $(linkText("Team")).click();
+        });
+        step("Нажать на кнопку «Sign up for free»", () -> {
+            $(".btn-large-mktg").click();
+        });
+        step("Проверить отображение «Create your account»", () -> {
+            $(".container-md").shouldHave(Condition.text("Join GitHub Create your account"));
+        });
+    }
+
+    @Test
+    public void testContinueWithTeamOnTeamPage() {
+        step("Перейти на главную страницу", () -> {
+            open(baseUrl);
+        });
+        step("Нажать на ссылку Team в меню", () -> {
+            $(linkText("Team")).click();
+        });
+        step("Нажать на кнопку «Continue with Team»", () -> {
+            $(".js-pricing-upgrade-path").click();
+        });
+        step("Проверить отображение «Create your account»", () -> {
+            $(".container-md").shouldHave(Condition.text("Join GitHub Create your account"));
+        });
+    }
+
+    @Test
+    public void testContactSalesOnMainPage() {
+        step("Перейти на главную страницу", () -> {
+            open(baseUrl);
+        });
+        step("Нажать на кнопку «ContactSales»", () -> {
+            $(".btn-subtle-mktg").scrollIntoView(true).click();
+        });
+        step("Проверить отображение «Create your account»", () -> {
+            $(".pb-md-6").shouldHave(Condition.text("Talk to our sales team"));
+        });
+    }
 }
